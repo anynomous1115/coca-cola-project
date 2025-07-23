@@ -10,13 +10,24 @@ class OrdersController {
       const result = await orderService.createOrder(orderData);
 
       if (result.success) {
-        return responseHandler.success(res, result.data, result.message);
+        return responseHandler.successHandler(
+          res,
+          result.data,
+          result.message,
+          200
+        );
       } else {
-        return responseHandler.error(res, result.message, 400);
+        return responseHandler.errorHandler(res, {
+          code: 400,
+          message: result.message,
+        });
       }
     } catch (error) {
       console.error("Error in createOrder:", error);
-      return responseHandler.error(res, "Internal server error", 500);
+      return responseHandler.errorHandler(res, {
+        code: 500,
+        message: "Internal server error",
+      });
     }
   }
 
@@ -28,13 +39,24 @@ class OrdersController {
       const result = await orderService.getOrder(orderId);
 
       if (result.success) {
-        return responseHandler.success(res, result.data);
+        return responseHandler.successHandler(
+          res,
+          result.data,
+          "Order retrieved",
+          200
+        );
       } else {
-        return responseHandler.error(res, result.message, 404);
+        return responseHandler.errorHandler(res, {
+          code: 404,
+          message: result.message,
+        });
       }
     } catch (error) {
       console.error("Error in getOrder:", error);
-      return responseHandler.error(res, "Internal server error", 500);
+      return responseHandler.errorHandler(res, {
+        code: 500,
+        message: "Internal server error",
+      });
     }
   }
 
@@ -45,19 +67,33 @@ class OrdersController {
       const { status } = req.body;
 
       if (!status) {
-        return responseHandler.error(res, "Status is required", 400);
+        return responseHandler.errorHandler(res, {
+          code: 400,
+          message: "Status is required",
+        });
       }
 
       const result = await orderService.updateOrderStatus(orderId, status);
 
       if (result.success) {
-        return responseHandler.success(res, result.data, result.message);
+        return responseHandler.successHandler(
+          res,
+          result.data,
+          result.message,
+          200
+        );
       } else {
-        return responseHandler.error(res, result.message, 400);
+        return responseHandler.errorHandler(res, {
+          code: 400,
+          message: result.message,
+        });
       }
     } catch (error) {
       console.error("Error in updateOrderStatus:", error);
-      return responseHandler.error(res, "Internal server error", 500);
+      return responseHandler.errorHandler(res, {
+        code: 500,
+        message: "Internal server error",
+      });
     }
   }
 }

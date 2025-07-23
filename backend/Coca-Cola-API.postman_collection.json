@@ -1,0 +1,211 @@
+{
+  "info": {
+    "name": "Coca-Cola AI Agent API",
+    "description": "API Collection for Coca-Cola AI Agent Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "AI API",
+      "item": [
+        {
+          "name": "Get Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ai/products?limit=5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ai", "products"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Check Stock",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": \"507f1f77bcf86cd799439011\",\n  \"quantity\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ai/check-stock",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ai", "check-stock"]
+            }
+          }
+        },
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"507f1f77bcf86cd799439012\",\n  \"items\": [\n    {\n      \"productId\": \"507f1f77bcf86cd799439011\",\n      \"quantity\": 2\n    }\n  ],\n  \"customerInfo\": {\n    \"name\": \"Nguyễn Văn Test\",\n    \"phone\": \"0901234567\",\n    \"address\": \"123 Test Street, HCM\"\n  },\n  \"discountCode\": \"COCACOLA10\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ai/create-order",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ai", "create-order"]
+            }
+          }
+        },
+        {
+          "name": "Get Promotions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ai/promotions",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ai", "promotions"]
+            }
+          }
+        },
+        {
+          "name": "Validate Discount",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"discountCode\": \"COCACOLA10\",\n  \"orderAmount\": 100000\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ai/validate-discount",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "ai", "validate-discount"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Core API",
+      "item": [
+        {
+          "name": "Inventory Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/inventory/check/507f1f77bcf86cd799439011",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "inventory", "check", "507f1f77bcf86cd799439011"]
+            }
+          }
+        },
+        {
+          "name": "Create Order Core",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"507f1f77bcf86cd799439012\",\n  \"items\": [\n    {\n      \"productId\": \"507f1f77bcf86cd799439011\",\n      \"quantity\": 2\n    }\n  ],\n  \"customerInfo\": {\n    \"name\": \"Nguyễn Văn Test\",\n    \"phone\": \"0901234567\",\n    \"address\": \"123 Test Street, HCM\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/orders/create",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "orders", "create"]
+            }
+          }
+        },
+        {
+          "name": "Active Promotions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/promotions/active",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "promotions", "active"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Zalo API",
+      "item": [
+        {
+          "name": "Zalo Webhook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event_name\": \"user_send_text\",\n  \"app_id\": \"test_app\",\n  \"user_id_by_app\": \"test_user_123\",\n  \"data\": {\n    \"content\": \"Xin chào\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/zalo/webhook",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "zalo", "webhook"]
+            }
+          }
+        },
+        {
+          "name": "Send Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"test_user_123\",\n  \"message\": \"Hello from Postman!\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/zalo/send-message",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "zalo", "send-message"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

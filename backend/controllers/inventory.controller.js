@@ -14,13 +14,24 @@ class InventoryController {
       );
 
       if (result.success) {
-        return responseHandler.success(res, result.data);
+        return responseHandler.successHandler(
+          res,
+          result.data,
+          "Stock checked",
+          200
+        );
       } else {
-        return responseHandler.error(res, result.message, 400);
+        return responseHandler.errorHandler(res, {
+          code: 400,
+          message: result.message,
+        });
       }
     } catch (error) {
       console.error("Error in checkStock:", error);
-      return responseHandler.error(res, "Internal server error", 500);
+      return responseHandler.errorHandler(res, {
+        code: 500,
+        message: "Internal server error",
+      });
     }
   }
 
@@ -30,19 +41,33 @@ class InventoryController {
       const { items } = req.body;
 
       if (!items || !Array.isArray(items)) {
-        return responseHandler.error(res, "Items array is required", 400);
+        return responseHandler.errorHandler(res, {
+          code: 400,
+          message: "Items array is required",
+        });
       }
 
       const result = await productService.checkMultipleStock(items);
 
       if (result.success) {
-        return responseHandler.success(res, result.data);
+        return responseHandler.successHandler(
+          res,
+          result.data,
+          "Multiple stock checked",
+          200
+        );
       } else {
-        return responseHandler.error(res, result.message, 400);
+        return responseHandler.errorHandler(res, {
+          code: 400,
+          message: result.message,
+        });
       }
     } catch (error) {
       console.error("Error in checkMultipleStock:", error);
-      return responseHandler.error(res, "Internal server error", 500);
+      return responseHandler.errorHandler(res, {
+        code: 500,
+        message: "Internal server error",
+      });
     }
   }
 }
