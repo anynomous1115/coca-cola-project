@@ -1,0 +1,68 @@
+[
+  {
+    "ID": 1,
+    "Tên sản phẩm": "Coca-Cola",
+    "Loại": "Nước ngọt có gas",
+    "Chi tiết": "Có ga, hương vị cổ điển"
+  },
+  {
+    "ID": 2,
+    "Tên sản phẩm": "Coca-Cola Light",
+    "Loại": "Nước ngọt có gas",
+    "Chi tiết": "Có ga, ít calo"
+  },
+  {
+    "ID": 3,
+    "Tên sản phẩm": "Coca-Cola Zero Sugar",
+    "Loại": "Nước ngọt có gas",
+    "Chi tiết": "Không đường, hương vị mạnh"
+  },
+  {
+    "ID": 4,
+    "Tên sản phẩm": "Coca-Cola Plus",
+    "Loại": "Nước ngọt có gas",
+    "Chi tiết": "Có bổ sung chất xơ, tốt cho tiêu hóa"
+  },
+  {
+    "ID": 5,
+    "Tên sản phẩm": "Monster Energy",
+    "Loại": "Nước tăng lực",
+    "Chi tiết": "Nước tăng lực nhập khẩu"
+  },
+  {
+    "ID": 6,
+    "Tên sản phẩm": "Nutri Boost (Energy)",
+    "Loại": "Nước tăng lực",
+    "Chi tiết": "Năng lượng và dinh dưỡng"
+  },
+  {
+    "ID": 7,
+    "Tên sản phẩm": "Aquarius",
+    "Loại": "Nước uống thể thao",
+    "Chi tiết": "Nước bù điện giải cho vận động viên"
+  },
+  {
+    "ID": 8,
+    "Tên sản phẩm": "FUZETEA+",
+    "Loại": "Trà uống liền",
+    "Chi tiết": "Trà thảo mộc và hoa quả"
+  },
+  {
+    "ID": 9,
+    "Tên sản phẩm": "FUZETEA Matcha",
+    "Loại": "Trà uống liền",
+    "Chi tiết": "Trà matcha hoà tan"
+  },
+  {
+    "ID": 10,
+    "Tên sản phẩm": "Minute Maid",
+    "Loại": "Nước trái cây",
+    "Chi tiết": "Nước ép trái cây tươi ngon"
+  },
+  {
+    "ID": 11,
+    "Tên sản phẩm": "Minute Maid Teppy",
+    "Loại": "Nước trái cây",
+    "Chi tiết": "Nước trái cây có tép cam"
+  }
+]
