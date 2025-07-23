@@ -1,0 +1,302 @@
+{
+  "categories": [
+    {
+      "_id": "64f1234567890abc12345016",
+      "name": "Coca-Cola Classic",
+      "description": "Dòng sản phẩm Coca-Cola truyền thống",
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345002",
+      "name": "Coca-Cola Zero & Light",
+      "description": "Dòng sản phẩm Coca-Cola không đường/ít đường",
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345003",
+      "name": "Coca-Cola Vị Trái Cây",
+      "description": "Các vị Coca-Cola trái cây đặc biệt",
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345004",
+      "name": "Coca-Cola Energy",
+      "description": "Dòng sản phẩm năng lượng từ Coca-Cola",
+      "isActive": true
+    }
+  ],
+  "products": [
+    {
+      "_id": "64f1234567890abc12345015",
+      "name": "Coca-Cola Original 330ml",
+      "description": "Nước ngọt Coca-Cola nguyên bản với hương vị cổ điển",
+      "price": 12000,
+      "category": "64f1234567890abc12345001",
+      "image": "/images/coca-original-330ml.jpg",
+      "stock": 150,
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345679",
+      "name": "Coca-Cola Original 500ml",
+      "description": "Coca-Cola nguyên bản size lớn 500ml",
+      "price": 18000,
+      "category": "64f1234567890abc12345001",
+      "image": "/images/coca-original-500ml.jpg",
+      "stock": 120,
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345680",
+      "name": "Coca-Cola Zero 330ml",
+      "description": "Coca-Cola không đường, hương vị tuyệt vời",
+      "price": 12000,
+      "category": "64f1234567890abc12345002",
+      "image": "/images/coca-zero-330ml.jpg",
+      "stock": 100,
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345681",
+      "name": "Coca-Cola Zero 500ml",
+      "description": "Coca-Cola Zero size lớn 500ml",
+      "price": 18000,
+      "category": "64f1234567890abc12345002",
+      "image": "/images/coca-zero-500ml.jpg",
+      "stock": 80,
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345682",
+      "name": "Coca-Cola Light 330ml",
+      "description": "Coca-Cola Light ít calories cho phái đẹp",
+      "price": 13000,
+      "category": "64f1234567890abc12345002",
+      "image": "/images/coca-light-330ml.jpg",
+      "stock": 90,
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345683",
+      "name": "Coca-Cola Cherry 330ml",
+      "description": "Coca-Cola vị cherry ngọt ngào",
+      "price": 15000,
+      "category": "64f1234567890abc12345003",
+      "image": "/images/coca-cherry-330ml.jpg",
+      "stock": 60,
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345684",
+      "name": "Coca-Cola Vanilla 330ml",
+      "description": "Coca-Cola vị vanilla thơm lừng",
+      "price": 15000,
+      "category": "64f1234567890abc12345003",
+      "image": "/images/coca-vanilla-330ml.jpg",
+      "stock": 70,
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345685",
+      "name": "Coca-Cola Lemon 330ml",
+      "description": "Coca-Cola vị chanh tươi mát",
+      "price": 14000,
+      "category": "64f1234567890abc12345003",
+      "image": "/images/coca-lemon-330ml.jpg",
+      "stock": 85,
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345686",
+      "name": "Coca-Cola Energy 250ml",
+      "description": "Nước tăng lực Coca-Cola Energy",
+      "price": 25000,
+      "category": "64f1234567890abc12345004",
+      "image": "/images/coca-energy-250ml.jpg",
+      "stock": 40,
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345687",
+      "name": "Coca-Cola Energy Zero 250ml",
+      "description": "Nước tăng lực Coca-Cola Energy không đường",
+      "price": 25000,
+      "category": "64f1234567890abc12345004",
+      "image": "/images/coca-energy-zero-250ml.jpg",
+      "stock": 35,
+      "isActive": true
+    }
+  ],
+  "users": [
+    {
+      "_id": "64f1234567890abc12345abc",
+      "zaloId": "zalo_user_123456",
+      "name": "Nguyễn Văn An",
+      "phone": "0901234567",
+      "address": "123 Lê Lợi, Quận 1, TP.HCM",
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345abd",
+      "zaloId": "zalo_user_123457",
+      "name": "Trần Thị Bình",
+      "phone": "0907654321",
+      "address": "456 Nguyễn Huệ, Quận 1, TP.HCM",
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345abe",
+      "zaloId": "zalo_user_123458",
+      "name": "Lê Văn Cường",
+      "phone": "0912345678",
+      "address": "789 Điện Biên Phủ, Quận 3, TP.HCM",
+      "isActive": true
+    }
+  ],
+  "discounts": [
+    {
+      "_id": "64f1234567890abc12345def",
+      "code": "COCACOLA10",
+      "name": "Giảm 10% cho tất cả sản phẩm Coca-Cola",
+      "percentage": 10,
+      "maxDiscountAmount": 20000,
+      "minOrderAmount": 50000,
+      "startDate": "2025-07-01T00:00:00.000Z",
+      "endDate": "2025-12-31T23:59:59.000Z",
+      "usageLimit": 200,
+      "usedCount": 15,
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345def",
+      "code": "NEWCOKE20",
+      "name": "Khuyến mãi thử vị mới 20%",
+      "percentage": 20,
+      "maxDiscountAmount": 30000,
+      "minOrderAmount": 80000,
+      "startDate": "2025-07-01T00:00:00.000Z",
+      "endDate": "2025-09-30T23:59:59.000Z",
+      "usageLimit": 100,
+      "usedCount": 25,
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345de1",
+      "code": "ZEROENERGY15",
+      "name": "Combo Zero & Energy giảm 15%",
+      "percentage": 15,
+      "maxDiscountAmount": 25000,
+      "minOrderAmount": 60000,
+      "startDate": "2025-06-01T00:00:00.000Z",
+      "endDate": "2025-08-31T23:59:59.000Z",
+      "usageLimit": 150,
+      "usedCount": 40,
+      "isActive": true
+    },
+    {
+      "_id": "64f1234567890abc12345dei",
+      "code": "BIGSIZE25",
+      "name": "Mua size lớn (500ml) giảm 25%",
+      "percentage": 25,
+      "maxDiscountAmount": 40000,
+      "minOrderAmount": 100000,
+      "startDate": "2025-07-15T00:00:00.000Z",
+      "endDate": "2025-08-15T23:59:59.000Z",
+      "usageLimit": 80,
+      "usedCount": 8,
+      "isActive": true
+    }
+  ],
+  "orders": [
+    {
+      "_id": "64f1234567890abc12345012",
+      "orderId": "ORDER_1690123456789",
+      "user": "64f1234567890abc12345abc",
+      "items": [
+        {
+          "product": "64f1234567890abc12345678",
+          "productName": "Coca-Cola Original 330ml",
+          "quantity": 3,
+          "price": 12000,
+          "total": 36000
+        },
+        {
+          "product": "64f1234567890abc12345680",
+          "productName": "Coca-Cola Zero 330ml",
+          "quantity": 2,
+          "price": 12000,
+          "total": 24000
+        }
+      ],
+      "totalAmount": 54000,
+      "customerInfo": {
+        "name": "Nguyễn Văn An",
+        "phone": "0901234567",
+        "address": "123 Lê Lợi, Quận 1, TP.HCM"
+      },
+      "status": "delivered",
+      "discountCode": "COCACOLA10",
+      "discountAmount": 6000
+    },
+    {
+      "_id": "64f1234567890abc12345013",
+      "orderId": "ORDER_1690123456790",
+      "user": "64f1234567890abc12345abd",
+      "items": [
+        {
+          "product": "64f1234567890abc12345683",
+          "productName": "Coca-Cola Cherry 330ml",
+          "quantity": 2,
+          "price": 15000,
+          "total": 30000
+        },
+        {
+          "product": "64f1234567890abc12345684",
+          "productName": "Coca-Cola Vanilla 330ml",
+          "quantity": 2,
+          "price": 15000,
+          "total": 30000
+        }
+      ],
+      "totalAmount": 48000,
+      "customerInfo": {
+        "name": "Trần Thị Bình",
+        "phone": "0907654321",
+        "address": "456 Nguyễn Huệ, Quận 1, TP.HCM"
+      },
+      "status": "shipping",
+      "discountCode": "NEWCOKE20",
+      "discountAmount": 12000
+    },
+    {
+      "_id": "64f1234567890abc12345014",
+      "orderId": "ORDER_1690123456791",
+      "user": "64f1234567890abc12345abe",
+      "items": [
+        {
+          "product": "64f1234567890abc12345679",
+          "productName": "Coca-Cola Original 500ml",
+          "quantity": 3,
+          "price": 18000,
+          "total": 54000
+        },
+        {
+          "product": "64f1234567890abc12345686",
+          "productName": "Coca-Cola Energy 250ml",
+          "quantity": 2,
+          "price": 25000,
+          "total": 50000
+        }
+      ],
+      "totalAmount": 78000,
+      "customerInfo": {
+        "name": "Lê Văn Cường",
+        "phone": "0912345678",
+        "address": "789 Điện Biên Phủ, Quận 3, TP.HCM"
+      },
+      "status": "confirmed",
+      "discountCode": "BIGSIZE25",
+      "discountAmount": 26000
+    }
+  ]
+}
