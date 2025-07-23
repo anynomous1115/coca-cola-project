@@ -1,52 +1,46 @@
-const mongoose = require("mongoose");
+const { default: mongoose } = require("mongoose");
 
-const orderSchema = new mongoose.Schema(
-  {
-    orderId: {
-      type: String,
-      unique: true,
-      required: true,
-    },
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
-    items: [
-      {
-        product: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Product",
-        },
-        productName: String,
-        quantity: Number,
-        price: Number,
-        total: Number,
-      },
-    ],
-    totalAmount: {
-      type: Number,
-      required: true,
-    },
-    customerInfo: {
-      name: String,
-      phone: String,
-      address: String,
-    },
-    status: {
-      type: String,
-      enum: ["pending", "confirmed", "shipping", "delivered", "cancelled"],
-      default: "pending",
-    },
-    discountCode: String,
-    discountAmount: {
-      type: Number,
-      default: 0,
-    },
+const orderSchema = new mongoose.Schema({
+  orderId: String,
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  items: [{
+    product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+    productName: String,
+    quantity: Number,
+    price: Number,
+    total: Number,
+  }],
+  totalAmount: Number,
+  shippingFee: Number, 
+  customerInfo: {
+    name: String,
+    phone: String,
+    address: String,
+    districtId: Number, 
+    wardCode: String,  
   },
-  {
-    timestamps: true,
-  }
-);
-
+  discountCode: String,
+  discountAmount: Number,
+  leadtime: Date, 
+  ghnOrderCode: String, 
+  status: {
+    type: String,
+    enum: [
+      "ready_to_pick",
+      "picking",
+      "picked",
+      "storing",
+      "transporting",
+      "sorting",
+      "delivering",
+      "delivered",
+      "return",
+      "returned",
+      "cancel",
+      "lost",
+      "damage",
+    ],
+    default: "ready_to_pick",
+  },
+});
 module.exports = mongoose.model("Order", orderSchema);

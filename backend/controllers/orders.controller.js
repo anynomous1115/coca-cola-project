@@ -1,65 +1,90 @@
-const orderService = require("../services/orders.service");
-const responseHandler = require("../helpers/responseHandler");
+const { error, success } = require("../helpers/responseHandler");
+const OrderService = require("../services/orders.service");
 
-class OrdersController {
-  // Tạo đơn hàng
+class OrderController {
   async createOrder(req, res) {
     try {
-      const orderData = req.body;
-
-      const result = await orderService.createOrder(orderData);
-
-      if (result.success) {
-        return responseHandler.success(res, result.data, result.message);
-      } else {
-        return responseHandler.error(res, result.message, 400);
+      const result = await OrderService.createOrder(req.body);
+      if (!result.success) {
+        return error(res, { code: 400, message: result.message, details: result.data });
       }
-    } catch (error) {
-      console.error("Error in createOrder:", error);
-      return responseHandler.error(res, "Internal server error", 500);
+      return success(res, result.data, result.message, 201);
+    } catch (err) {
+      return error(res, { code: 500, message: `Internal server error: ${err.message}` });
     }
   }
 
-  // Lấy thông tin đơn hàng
   async getOrder(req, res) {
     try {
-      const { orderId } = req.params;
-
-      const result = await orderService.getOrder(orderId);
-
-      if (result.success) {
-        return responseHandler.success(res, result.data);
-      } else {
-        return responseHandler.error(res, result.message, 404);
+      const result = await OrderService.getOrder(req.params.orderId);
+      if (!result.success) {
+        return error(res, { code: 404, message: result.message });
       }
-    } catch (error) {
-      console.error("Error in getOrder:", error);
-      return responseHandler.error(res, "Internal server error", 500);
+      return success(res, result.data, result.message);
+    } catch (err) {
+      return error(res, { code: 500, message: `Internal server error: ${err.message}` });
     }
   }
 
-  // Cập nhật trạng thái đơn hàng
   async updateOrderStatus(req, res) {
     try {
-      const { orderId } = req.params;
-      const { status } = req.body;
-
-      if (!status) {
-        return responseHandler.error(res, "Status is required", 400);
+      const result = await OrderService.updateOrderStatus(req.params.orderId, req.body.status);
+      if (!result.success) {
+        return error(res, { code: 400, message: result.message });
       }
+      return success(res, result.data, result.message);
+    } catch (err) {
+      return error(res, { code: 500, message: `Internal server error: ${err.message}` });
+    }
+  }
 
-      const result = await orderService.updateOrderStatus(orderId, status);
-
-      if (result.success) {
-        return responseHandler.success(res, result.data, result.message);
-      } else {
-        return responseHandler.error(res, result.message, 400);
+  async editOrder(req, res) {
+    try {
+      const result = await OrderService.editOrder(req.params.orderId, req.body);
+      if (!result.success) {
+        return error(res, { code: 400, message: result.message });
       }
-    } catch (error) {
-      console.error("Error in updateOrderStatus:", error);
-      return responseHandler.error(res, "Internal server error", 500);
+      return success(res, result.data, result.message);
+    } catch (err) {
+      return error(res, { code: 500, message: `Internal server error: ${err.message}` });
+    }
+  }
+
+  async cancelOrder(req, res) {
+    try {
+      const result = await OrderService.cancelOrder(req.params.orderId);
+      if (!result.success) {
+        return error(res, { code: 400, message: result.message });
+      }
+      return success(res, result.data, result.message);
+    } catch (err) {
+      return error(res, { code: 500, message: `Internal server error: ${err.message}` });
+    }
+  }
+
+  async updateOrderCOD(req, res) {
+    try {
+      const result = await OrderService.updateOrderCOD(req.params.orderId, req.body.codAmount);
+      if (!result.success) {
+        return error(res, { code: 400, message: result.message });
+      }
+      return success(res, result.data, result.message);
+    } catch (err) {
+      return error(res, { code: 500, message: `Internal server error: ${err.message}` });
+    }
+  }
+
+  async returnOrder(req, res) {
+    try {
+      const result = await OrderService.returnOrder(req.params.orderId);
+      if (!result.success) {
+        return error(res, { code: 400, message: result.message });
+      }
+      return success(res, result.data, result.message);
+    } catch (err) {
+      return error(res, { code: 500, message: `Internal server error: ${err.message}` });
     }
   }
 }
 
-module.exports = new OrdersController();
+module.exports = new OrderController();
