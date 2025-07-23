@@ -9,13 +9,24 @@ class PromotionsController {
       const result = await discountService.getActivePromotions(userId);
 
       if (result.success) {
-        return responseHandler.success(res, result.data);
+        return responseHandler.successHandler(
+          res,
+          result.data,
+          "Active promotions retrieved",
+          200
+        );
       } else {
-        return responseHandler.error(res, result.message, 400);
+        return responseHandler.errorHandler(res, {
+          code: 400,
+          message: result.message,
+        });
       }
     } catch (error) {
       console.error("Error in getActivePromotions:", error);
-      return responseHandler.error(res, "Internal server error", 500);
+      return responseHandler.errorHandler(res, {
+        code: 500,
+        message: "Internal server error",
+      });
     }
   }
 

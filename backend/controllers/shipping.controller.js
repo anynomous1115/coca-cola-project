@@ -7,16 +7,102 @@ class ShippingController {
     try {
       const { orderId } = req.params;
 
+      if (!orderId) {
+        return responseHandler.errorHandler(res, {
+          code: 400,
+          message: "OrderId is required",
+        });
+      }
+
       const result = await shippingService.getShippingInfo(orderId);
 
       if (result.success) {
-        return responseHandler.success(res, result.data);
+        return responseHandler.successHandler(
+          res,
+          result.data,
+          "Shipping info retrieved",
+          200
+        );
       } else {
-        return responseHandler.error(res, result.message, 404);
+        return responseHandler.errorHandler(res, {
+          code: 404,
+          message: result.message,
+        });
       }
     } catch (error) {
       console.error("Error in getShippingInfo:", error);
-      return responseHandler.error(res, "Internal server error", 500);
+      return responseHandler.errorHandler(res, {
+        code: 500,
+        message: "Internal server error",
+      });
+    }
+  }
+
+  // Lấy danh sách phương thức giao hàng
+  async getShippingMethods(req, res) {
+    try {
+      const { weight, district } = req.query;
+
+      const result = await shippingService.getShippingMethods({
+        weight: weight ? parseFloat(weight) : undefined,
+        district,
+      });
+
+      if (result.success) {
+        return responseHandler.successHandler(
+          res,
+          result.data,
+          "Shipping methods retrieved",
+          200
+        );
+      } else {
+        return responseHandler.errorHandler(res, {
+          code: 404,
+          message: result.message,
+        });
+      }
+    } catch (error) {
+      console.error("Error in getShippingMethods:", error);
+      return responseHandler.errorHandler(res, {
+        code: 500,
+        message: "Internal server error",
+      });
+    }
+  }
+
+  // Tính phí giao hàng
+  async calculateShippingFee(req, res) {
+    try {
+      const { items, address } = req.body;
+
+      if (!items || !items.length || !address) {
+        return responseHandler.errorHandler(res, {
+          code: 400,
+          message: "Items and address are required",
+        });
+      }
+
+      const result = await shippingService.calculateShippingFee(items, address);
+
+      if (result.success) {
+        return responseHandler.successHandler(
+          res,
+          result.data,
+          "Shipping fee calculated",
+          200
+        );
+      } else {
+        return responseHandler.errorHandler(res, {
+          code: 400,
+          message: result.message,
+        });
+      }
+    } catch (error) {
+      console.error("Error in calculateShippingFee:", error);
+      return responseHandler.errorHandler(res, {
+        code: 500,
+        message: "Internal server error",
+      });
     }
   }
 
@@ -24,48 +110,40 @@ class ShippingController {
   async updateShippingStatus(req, res) {
     try {
       const { orderId } = req.params;
-      const { shippingStatus } = req.body;
+      const { status, location, estimatedDelivery } = req.body;
 
-      if (!shippingStatus) {
-        return responseHandler.error(res, "Shipping status is required", 400);
+      if (!orderId || !status) {
+        return responseHandler.errorHandler(res, {
+          code: 400,
+          message: "OrderId and status are required",
+        });
       }
 
-      const result = await shippingService.updateShippingStatus(
-        orderId,
-        shippingStatus
-      );
+      const result = await shippingService.updateShippingStatus(orderId, {
+        status,
+        location,
+        estimatedDelivery,
+      });
 
       if (result.success) {
-        return responseHandler.success(res, result.data, result.message);
+        return responseHandler.successHandler(
+          res,
+          result.data,
+          "Shipping status updated",
+          200
+        );
       } else {
-        return responseHandler.error(res, result.message, 400);
+        return responseHandler.errorHandler(res, {
+          code: 404,
+          message: result.message,
+        });
       }
     } catch (error) {
       console.error("Error in updateShippingStatus:", error);
-      return responseHandler.error(res, "Internal server error", 500);
-    }
-  }
-
-  // Tính phí ship
-  async calculateShippingFee(req, res) {
-    try {
-      const { address, weight = 1 } = req.body;
-
-      if (!address) {
-        return responseHandler.error(res, "Address is required", 400);
-      }
-
-      const shippingFee = shippingService.calculateShippingFee(address, weight);
-
-      return responseHandler.success(res, {
-        address,
-        weight,
-        shippingFee,
-        currency: "VND",
+      return responseHandler.errorHandler(res, {
+        code: 500,
+        message: "Internal server error",
       });
-    } catch (error) {
-      console.error("Error in calculateShippingFee:", error);
-      return responseHandler.error(res, "Internal server error", 500);
     }
   }
 }
