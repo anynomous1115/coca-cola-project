@@ -1,21 +1,18 @@
-const {
-  getAllPostsService,
-  getPostByIdService,
-} = require("../services/posts.service");
 const { paginateUtil } = require("../utils/pagination");
 const { successHandler, errorHandler } = require("../helpers/responseHandler");
+const { getProductByIdService } = require("../services/products.service");
 
-exports.getAllPosts = async (req, res) => {
+exports.getAllProducts = async (req, res) => {
   try {
     const page = Math.max(parseInt(req.query.page) || 1, 1);
     const limit = Math.min(Math.max(parseInt(req.query.limit) || 5, 1), 100);
 
-    const totalPosts = await getAllPostsService("count");
-    const posts = await getAllPostsService("paginate", { page, limit });
+    const totalProducts = await getAllProductsService("count");
+    const products = await getAllProductsService("paginate", { page, limit });
 
-    const pagination = paginateUtil(page, limit, totalPosts);
+    const pagination = paginateUtil(page, limit, totalProducts);
     console.log({
-      posts,
+      products,
       pagination,
     });
 
@@ -37,20 +34,20 @@ exports.getAllPosts = async (req, res) => {
   }
 };
 
-exports.getPostById = async (req, res) => {
+exports.getProductById = async (req, res) => {
   try {
-    const post = await getPostByIdService(req.params.id);
-    if (!post) {
+    const product = await getProductByIdService(req.params.id);
+    if (!product) {
       return errorHandler(res, {
         code: 404,
-        message: "Post not found",
+        message: "Product not found",
       });
     }
-    successHandler(res, post, "Post retrieved successfully", 200);
+    successHandler(res, product, "Product retrieved successfully", 200);
   } catch (err) {
     errorHandler(res, {
       code: 500,
-      message: "Failed to retrieve post",
+      message: "Failed to retrieve product",
       details: err.message,
     });
   }
